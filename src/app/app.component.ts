@@ -10,13 +10,16 @@ export class AppComponent {
   palabraOculta = ''
   
   intentos = 0;
+
+  gano = false;
+  perder = false;
   
   letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
   'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S',
   'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   
   constructor() {
-    this.palabraOculta = " _".repeat(this.palabra.length);
+    this.palabraOculta = "_ ".repeat(this.palabra.length);
 
   }
 
@@ -32,15 +35,31 @@ export class AppComponent {
 
     }
     this.palabraOculta = palabraOcultaArr.join(' ');
+    this.verificaGane();
+  }
+  
+  verificaGane(){
+    const palabraArr = this.palabraOculta.split(' ');
+    const palabraEvaluar = palabraArr.join("");
+
+   if( palabraEvaluar === this.palabra) {
+     this.gano = true;
+     console.log ('Ganaste');
+   }
+
+   if ( this.intentos >= 9){
+     this.perder = true;
+      console.log ('Perdiste');
+   }
+
   }
 
   existeLetra (letra ){
     if (this.palabra.indexOf(letra)>=0){
-      console.log (`Letra existe ${letra}`)
-    }else {
-      console.log (`Letra no existe ${letra}`)
-      this.intentos ++;
+      
 
+    }else{
+      this.intentos ++;
     }
   }
 
