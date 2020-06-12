@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  palabra = 'AGUA';
+  palabra = 'PROGRAMAR';
   palabraOculta = ''
   
   intentos = 0;
